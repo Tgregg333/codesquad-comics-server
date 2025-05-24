@@ -58,7 +58,7 @@ app.get("/api/books/delete/:id", (request, response, next) => {
 
   app.listen(PORT, () => {
     console.log(
-      `Server is listening on ${PORT}. Connection established`
+      `Server is listening on http://localhost:${PORT}. Connection established`
     );
     console.log(
       `Visit http://localhost:${PORT}. Connection is established`
