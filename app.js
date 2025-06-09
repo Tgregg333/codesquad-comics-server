@@ -9,12 +9,18 @@ app.use(morgan("combined"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join_dirname, "public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 
 
 
 // my routes
+
+const bookRoute = require("./routes/bookRoutes");
+app.use("/api/books", bookRoute);
+
+
+
 app.get("/", (request, response, next) => {
   response.status(200).json({
     success: { message: "This routes to homepage" },
@@ -58,10 +64,11 @@ app.get("/api/books/delete/:id", (request, response, next) => {
 
   app.listen(PORT, () => {
     console.log(
-      `Server is listening on ${PORT}. Connection established`
+      `Server is listening on http://localhost:${PORT}. Connection established`
     );
     console.log(
       `Visit http://localhost:${PORT}. Connection is established`
     );
   });
+  
   
