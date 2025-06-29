@@ -6,12 +6,15 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const path = require("node:path");
 app.use(morgan("combined"));
+require("dotenv").config();
+const bookRoutes = require("./routes/bookRoutes");
+const connectFig = require("./config/connection")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-
+connectFig()
 
 
 // my routes
